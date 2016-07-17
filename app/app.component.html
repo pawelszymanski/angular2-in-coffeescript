@@ -1,0 +1,20 @@
+<h1> {{ title }} </h1>
+
+<!--<p>{{selectedHero | json}}</p>-->
+<hr>
+
+<input [(ngModel)]="newHero.name" placeholder="name">
+<input [(ngModel)]="newHero.age" placeholder="age">
+<button type="button" (click)="addHero()" [disabled]="!isNewHeroValid()">Add hero</button>
+
+<hr>
+
+<ul>
+    <li *ngFor="#hero of heroes" (click)="selectHero(hero)" [ngClass]="{bold: selectedHero.name === hero.name}">
+        <span class="badge">{{ hero.name }}</span> {{ hero.age }}
+    </li>
+</ul>
+
+<hr>
+
+<hero-detail [hero]="selectedHero"></hero-detail>
